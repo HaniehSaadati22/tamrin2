@@ -1,26 +1,23 @@
-import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-@Component({
-  selector: 'app-login-page',
-  imports: [FormsModule],
-  templateUrl: './login-page.html',
-  styleUrl: './login-page.scss',
-})
-export class LoginPage {
-username:string='';
-password:string='';
-remember:boolean=false;
-message:string='';
-router=inject(Router); 
-test(){
-if (this.username=='admin' && this.password=='admin') {
-  this.router.navigateByUrl('/privete/dashboard')
-  
-}else{
-this.message='نام کاربری یا کلمه عبور صحیح نمیباشد'
-}
-}
+import { LoginPage } from './login-page';
 
-}
+describe('LoginPage', () => {
+  let component: LoginPage;
+  let fixture: ComponentFixture<LoginPage>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [LoginPage]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(LoginPage);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
